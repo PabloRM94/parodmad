@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,12 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [status, setStatus] = useState({
+    submitting: false,
+    success: false,
+    error: null
+  });
+  const form = useRef();
 
   const handleChange = (e) => {
     setFormData({
@@ -17,16 +24,37 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes implementar la lógica para enviar el correo
-    console.log('Form submitted:', formData);
-    alert('Mensaje enviado correctamente!');
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setStatus({ submitting: true, success: false, error: null });
+    
+    emailjs.sendForm(
+      'service_cr2togj',
+      'template_5b67jxc',
+      form.current,
+      'Iwaxv-m_aagPVrTRl'
+    )
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setStatus({ submitting: false, success: true, error: null });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error.text);
+        
+        // Provide more user-friendly error messages based on the error type
+        let userFriendlyError = 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.';
+        
+        if (error.text && error.text.includes('Gmail_API')) {
+          userFriendlyError = 'Error de autenticación con Gmail. Por favor, contacta al administrador del sitio.';
+        }
+        
+        setStatus({ submitting: false, success: false, error: userFriendlyError });
+      });
   };
 
   return (
@@ -41,7 +69,31 @@ const ContactSection = () => {
       color: 'white'
     }}>
       <h1 style={{ marginBottom: '40px' }}>Contacto</h1>
+      
+      {status.success && (
+        <div style={{ 
+          backgroundColor: '#4CAF50', 
+          padding: '10px 20px', 
+          borderRadius: '4px',
+          marginBottom: '20px'
+        }}>
+          ¡Mensaje enviado correctamente!
+        </div>
+      )}
+      
+      {status.error && (
+        <div style={{ 
+          backgroundColor: '#f44336', 
+          padding: '10px 20px', 
+          borderRadius: '4px',
+          marginBottom: '20px'
+        }}>
+          Error al enviar el mensaje: {status.error}
+        </div>
+      )}
+      
       <form 
+        ref={form}
         onSubmit={handleSubmit}
         style={{
           width: '100%',
@@ -133,24 +185,29 @@ const ContactSection = () => {
         
         <button 
           type="submit"
+          disabled={status.submitting}
           style={{
-            background: '#4CAF50',
+            background: status.submitting ? '#cccccc' : '#4CAF50',
             color: 'white',
             border: 'none',
             padding: '12px',
             borderRadius: '4px',
-            cursor: 'pointer',
+            cursor: status.submitting ? 'default' : 'pointer',
             fontSize: '16px',
             transition: 'all 0.3s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#3e8e41';
+            if (!status.submitting) {
+              e.currentTarget.style.backgroundColor = '#3e8e41';
+            }
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#4CAF50';
+            if (!status.submitting) {
+              e.currentTarget.style.backgroundColor = '#4CAF50';
+            }
           }}
         >
-          Enviar Mensaje
+          {status.submitting ? 'Enviando...' : 'Enviar Mensaje'}
         </button>
       </form>
     </div>

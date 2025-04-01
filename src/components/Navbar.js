@@ -153,8 +153,8 @@ const Navbar = () => {
             </NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/proyectos" onClick={toggleNav}>
-              Proyectos
+            <NavLinks to="/Experiencia" onClick={toggleNav}>
+              Experiencia
             </NavLinks>
           </NavItem>
           <NavItem>
