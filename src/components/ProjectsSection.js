@@ -153,7 +153,7 @@ const ProjectsSection = () => {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      padding: '0px 30px',
+      padding: '10px 10px',
       background: '#1a1a1a',
       color: 'white'
     }}>

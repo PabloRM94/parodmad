@@ -225,7 +225,8 @@ const HeroSection = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            minWidth: '180px'
+            minWidth: '180px',
+            marginBottom: '20px',
           }}>
             <h3 style={{ 
               fontSize: '0.9rem', 

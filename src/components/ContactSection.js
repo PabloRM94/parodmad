@@ -58,8 +58,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div style={{ 
-      minHeight: '100vh', 
+    <div style={{  
       padding: '50px 20px',
       background: '#1a1a1a',
       display: 'flex',
