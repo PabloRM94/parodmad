@@ -6,7 +6,7 @@ const ProjectsSection = () => {
     {
       id: 1,
       description: 'Aplicación web para la gestion de contadores personalizados.',
-      image: '/images/counter.png',
+      image: `${process.env.PUBLIC_URL}/images/counter.png`,
       link: 'https://counterchuleta.netlify.app/',
       imagePosition: 'center',
       technologies: [
@@ -18,7 +18,7 @@ const ProjectsSection = () => {
     {
       id: 2,
       description: ' Proyecto fin de ciclo. <br /> App enfocada en la gestión de tareas y entrenamientos de natación.',
-      image: '/images/Pabels_logo.png',
+      image: `${process.env.PUBLIC_URL}/images/Pabels_logo.png`,
       link: 'https://drive.google.com/file/d/1ZpxzH8KHmVtY3TTWmaryFzNfdH057bYB/view?usp=drive_link',
       imagePosition: 'center',
       objectFit: 'scale-down',
@@ -34,7 +34,7 @@ const ProjectsSection = () => {
     {
       id: 3,
       description: '<Strong>Voluntario en Pawify.</Strong> <br /> Proyecto internacional de adopción de animales. <br /> Coordinador del equipo de desarrollo.',
-      image: '/images/pawify_new.jpg',
+      image: `${process.env.PUBLIC_URL}/images/pawify_new.jpg`,
       link: 'https://pawify.org/',
       imagePosition: 'top left',
       technologies: [
@@ -48,7 +48,7 @@ const ProjectsSection = () => {
     {
       id: 4,
       description: 'Desarrollo de pruebas Automáticas para una entidad financiera. <br /> Implementación y mantenimiento de pruebas. <br />',
-      image: '/images/viewnext.png',
+      image: `${process.env.PUBLIC_URL}/images/viewnext.png`,
       link: 'https://drive.google.com/file/d/1gYC6LcH38XmYVZaz5BM_o8yXi29c_B6l/view?usp=drive_link',
       hasRecommendation: true,
       technologies: [

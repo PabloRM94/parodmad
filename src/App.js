@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Projects from './pages/Experience';
@@ -60,7 +60,7 @@ function App() {
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                Proyectos
+                Experiencia
               </Link>
             </li>
             <li>

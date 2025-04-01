@@ -200,7 +200,7 @@ const HeroSection = () => {
           margin: '0 auto', // Centrar en pantallas pequeñas
         }}>
           <img 
-            src="/images/CV.JPEG" 
+            src={`${process.env.PUBLIC_URL}/images/CV.JPEG`}
             alt="Pablo Rodríguez Madurga" 
             style={{
               width: '100%',
