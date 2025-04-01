@@ -18,10 +18,10 @@ const ProjectsSection = () => {
     {
       id: 2,
       description: ' Proyecto fin de ciclo. <br /> App enfocada en la gestión de tareas y entrenamientos de natación.',
-      image: `${process.env.PUBLIC_URL}/images/Pabels_logo.png`,
+      image: `${process.env.PUBLIC_URL}/images/pabels_logo.png`,
       link: 'https://drive.google.com/file/d/1ZpxzH8KHmVtY3TTWmaryFzNfdH057bYB/view?usp=drive_link',
-      imagePosition: 'center',
-      objectFit: 'scale-down',
+      imagePosition: 'top',
+      objectFit: 'cover',
       technologies: [
         { name: 'kotlin', color: '#7F52FF', textColor: '#fff' },
         { name: 'Android Studio', color: '#3DDC84', textColor: '#000' },
